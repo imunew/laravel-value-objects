@@ -1,0 +1,12 @@
+<?php
+
+namespace DummyNamespace;
+
+use Imunew\Laravel\ValueObjects\ImmutableObject;
+
+class DummyClass extends ImmutableObject
+{
+    public function __construct()
+    {
+    }
+}
