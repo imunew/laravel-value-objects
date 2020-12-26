@@ -1,6 +1,10 @@
 # laravel-value-objects
 This package provides abstract Value Object (immutable) class and `make:value-object` command.
 
+```bash
+$ composer require imunew/laravel-value-objects
+```
+
 ## abstract Value Object (immutable) class
 The abstract ImmutableObject class has the following features.
 
@@ -73,8 +77,8 @@ class Range extends ImmutableObject
 
 ```php
 $range = new Range(1, 10);
-echo $range->range;
-// [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+echo json_encode($range->range);
+// [1,2,3,4,5,6,7,8,9,10]
 ```
 
 ## Example 2 (`DirectoryTree`)
@@ -109,6 +113,6 @@ $directoryTree = new DirectoryTree([
     ]
 ]);
 
-echo $directoryTree->get('app.Http');
-// 'Controllers' => [], 'Middleware' => [], 'Requests' => [], 'Resources' => [],
+echo json_encode($directoryTree->get('app.Http'));
+// {"Controllers":[],"Middleware":[],"Requests":[],"Resources":[]}
 ```
