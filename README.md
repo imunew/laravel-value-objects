@@ -1,4 +1,5 @@
 # laravel-value-objects
+[![CircleCI](https://circleci.com/gh/imunew/laravel-value-objects.svg?style=svg)](https://circleci.com/gh/imunew/laravel-value-objects)  
 This package provides abstract Value Object (immutable) class and `make:value-object` command.
 
 ```bash
