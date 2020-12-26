@@ -2,7 +2,7 @@
 
 namespace Tests;
 
-use Imunew\Laravel\ValueObjects\Provider\ServiceProvider;
+use Imunew\Laravel\ValueObjects\Providers\ServiceProvider;
 use Orchestra\Testbench\TestCase as BaseTestCase;
 
 /**
