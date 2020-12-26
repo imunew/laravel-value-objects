@@ -35,4 +35,12 @@ class Range extends ImmutableObject
     {
         return range($this->start, $this->end, $this->step);
     }
+
+    /**
+     * @return array
+     */
+    public function toArray()
+    {
+        return $this->range;
+    }
 }

@@ -26,6 +26,7 @@ class RangeTest extends TestCase
         $this->assertSame($end, $range->end);
         $this->assertSame($step, $range->step);
         $this->assertSame($expectedArray, $range->range);
+        $this->assertSame(json_encode($expectedArray), (string) $range);
     }
 
     /**

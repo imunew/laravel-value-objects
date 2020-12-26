@@ -2,6 +2,9 @@
 
 namespace Imunew\Laravel\ValueObjects;
 
+use Illuminate\Contracts\Support\Arrayable;
+use Illuminate\Contracts\Support\Jsonable;
+use Illuminate\Database\Eloquent\JsonEncodingException;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
 
@@ -9,7 +12,7 @@ use Illuminate\Support\Str;
  * Class ImmutableObject
  * @package Imunew\Laravel\ValueObjects
  */
-abstract class ImmutableObject implements Immutable
+abstract class ImmutableObject implements Immutable, Arrayable, Jsonable
 {
     /** @var array */
     protected $attributes;
@@ -112,5 +115,34 @@ abstract class ImmutableObject implements Immutable
     public function __get(string $name)
     {
         return $this->get($name);
+    }
+
+    /**
+     * @return array
+     */
+    public function toArray()
+    {
+        return $this->attributes;
+    }
+
+    /**
+     * @param int $options
+     * @return string
+     */
+    public function toJson($options = 0)
+    {
+        $json = json_encode($this->toArray(), $options);
+        if (JSON_ERROR_NONE !== json_last_error()) {
+            throw new JsonEncodingException('Error encoding value-object ['.get_class($this).'] to JSON: '. json_last_error_msg());
+        }
+        return (string) ($json ?? '');
+    }
+
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->toJson();
     }
 }

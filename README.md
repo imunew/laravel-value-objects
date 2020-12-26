@@ -78,7 +78,7 @@ class Range extends ImmutableObject
 
 ```php
 $range = new Range(1, 10);
-echo json_encode($range->range);
+echo $range;
 // [1,2,3,4,5,6,7,8,9,10]
 ```
 
